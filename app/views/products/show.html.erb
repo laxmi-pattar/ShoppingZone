@@ -1,25 +1,18 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+	<div class="row">
+		<div class="col-md-7 pictures">
+			<%= image_tag @product.image_url(:large) %>
+		</div>
 
+		<div class="col-md-5">
 
-<p>
-  <strong>Title:</strong>
-  <%= @product.title %>
-</p>
+			<em><%= @product.title %> </em>
+			<hr>
 
-<p>
-  <strong>Description:</strong>
-  <%= @product.description %>
-</p>
+			<h3> <%=  @product.description %> </h3>
 
-<p>
-  <strong>Price:</strong>
-  <%= @product.price %>
-</p>
-
-<p>
-  <strong>Title:</strong>
-  <%= image_tag @product.avatar_url %>
-</p>
-
-
-
+			<p><%= @product.price  %> </p>
+			
+		</div>
+	</div>
+</div>
