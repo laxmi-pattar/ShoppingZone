@@ -1,21 +1,22 @@
 <div class="container">
 	<div class="row">
-		<div class="col-md-7 pictures">
-			<%= image_tag @product.image_url(:large) %>
+		<div class="col-md-6 pictures">
+			<%= render 'products/product_banner', product: @product %>
 		</div>
 
-		<div class="col-md-5">
+		<div class="col-md-6">
 
-			<em><%= @product.title %> </em>
+			<em class="font-weight-bold"><%= @product.title %> </em>
 			<hr>
 
 			<p> <%=  @product.description %> </p>
 
-			<p>$<%= @product.price  %> </p>
+			<p><%= number_to_currency @product.price  %> </p>
 
 			<button type="button" class="btn btn-warning">Add To Cart</button>
 			<button type="button" class="btn btn-info">Buy Now</button>
-			
 		</div>
 	</div>
+	<p> <%=  link_to 'Back', products_path, class: " btn btn-primary" %> </p> 
 </div>
+
