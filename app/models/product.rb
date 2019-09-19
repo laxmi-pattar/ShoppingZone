@@ -7,7 +7,8 @@ class Product
 
 	mount_uploader :image, ImageUploader
 
-	validates :title, :description, :price, :image, presence: true
+	validates :title, uniqueness: true, presence: true
+	validates :description, :price, :image, presence: true
 	
 
 end
