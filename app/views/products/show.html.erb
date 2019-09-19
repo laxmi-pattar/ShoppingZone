@@ -9,9 +9,12 @@
 			<em><%= @product.title %> </em>
 			<hr>
 
-			<h3> <%=  @product.description %> </h3>
+			<p> <%=  @product.description %> </p>
 
-			<p><%= @product.price  %> </p>
+			<p>$<%= @product.price  %> </p>
+
+			<button type="button" class="btn btn-warning">Add To Cart</button>
+			<button type="button" class="btn btn-info">Buy Now</button>
 			
 		</div>
 	</div>
