@@ -13,8 +13,8 @@
 
 			<p><%= number_to_currency @product.price  %> </p>
 
-			<button type="button" class="btn btn-warning">Add To Cart</button>
-			<button type="button" class="btn btn-info">Buy Now</button>
+			<%=  link_to 'Add To Cart', pages_cart_path, class: " btn btn-warning" %> 
+			<%=  link_to 'Buy Now', pages_cart_path, class: " btn btn-info" %> 
 		</div>
 	</div>
 	<p> <%=  link_to 'Back', products_path, class: " btn btn-primary" %> </p> 
