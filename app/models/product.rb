@@ -54,7 +54,7 @@ class Product
 	end
 
 	def set_destroy_action_after
-		puts 'product destroyed'
+		puts "#{self.id} destroyed"
 	end
 
 	def set_destroy_action_before
