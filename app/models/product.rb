@@ -26,7 +26,8 @@ class Product
 	before_create :set_admin_user_id
 	after_create :after_create
 
-	after_destroy :set_destroy_action_before
+	after_destroy :set_destroy_action_after
+	before_destroy :set_destroy_action_before
 
 	after_update :set_update_action_before
 
@@ -52,8 +53,12 @@ class Product
 		end
 	end
 
-	def set_destroy_action_before
+	def set_destroy_action_after
 		puts 'product destroyed'
+	end
+
+	def set_destroy_action_before
+		puts "before destroying"
 	end
 
 	def set_update_action_before
