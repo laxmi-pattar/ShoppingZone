@@ -1,7 +1,7 @@
 class Product
 	include Mongoid::Document
 	
-	belongs_to :admin_user
+	# belongs_to :admin_user
 
 	field :title, type: String
 	field :description, type: String
@@ -14,30 +14,49 @@ class Product
 	mount_uploader :main_image, ImageUploader
 
 	validates :title, uniqueness: true, presence: true
-	validates :description, :price, presence: true
-	validates :price, numericality: { greater_than: 0, less_than: 1000000 }
+	validates :description, presence: true
+	#validates :image, presence: true
+	#validates :main_image, presence: true
+	validates_numericality_of :price, :greater_than => 0, :less_than => 1000000 
+	validates_format_of :price, :with => /\A\d+(?:\.\d{0,2})?\z/
 
-	before_validation :method3
+	before_validation :before_validation
+	after_validation :after_validation
+
 	before_create :set_admin_user_id
-	after_create :set_method1
-	after_save :set_method2
+	after_create :after_create
+
+	after_destroy :set_destroy_action_before
+
+	after_update :set_update_action_before
 
 	private
 
 	def set_admin_user_id
-		puts 'admin_user_id initialised before_create'
+		puts 'inside set_admin_user_id before create'
 	end
 
-	def set_method1
+	def after_create
 		puts 'inside after_create method1'
 	end
 
-	def set_method2
-		puts 'inside after_save method2'
-	end
-
-	def method3
+	def before_validation
 		puts "before validation"
 	end
-	
+
+	def after_validation
+		if self.errors.any?
+			puts 'title already taken'
+		else
+			puts "No errors after validation"
+		end
+	end
+
+	def set_destroy_action_before
+		puts 'product destroyed'
+	end
+
+	def set_update_action_before
+		puts 'updated products'  if title_changed?
+	end
 end
