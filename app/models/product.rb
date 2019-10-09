@@ -1,7 +1,7 @@
 class Product
 	include Mongoid::Document
 	
-	# belongs_to :admin_user
+	#belongs_to :admin_user
 
 	field :title, type: String
 	field :description, type: String
@@ -13,10 +13,10 @@ class Product
 	mount_uploader :image, ImageUploader
 	mount_uploader :main_image, ImageUploader
 
-	validates :title, uniqueness: true, presence: true
+	validates :title, uniqueness: { case_sensitive: false }, presence: true
 	validates :description, presence: true
-	#validates :image, presence: true
-	#validates :main_image, presence: true
+	validates :image, presence: true
+	validates :main_image, presence: true
 	validates_numericality_of :price, :greater_than => 0, :less_than => 1000000 
 	validates_format_of :price, :with => /\A\d+(?:\.\d{0,2})?\z/
 
