@@ -1,0 +1,22 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-6 pictures">
+			<%= render 'products/product_banner', product: @product %>
+		</div>
+
+		<div class="col-md-6">
+
+			<em class="font-weight-bold"><%= @product.title %> </em>
+			<hr>
+
+			<p> <%=  @product.description %> </p>
+
+			<p><%= number_to_currency @product.price  %> </p>
+
+			<%=  link_to 'Add To Cart', pages_cart_path, class: " btn btn-warning" %> 
+			<%=  link_to 'Buy Now', pages_cart_path, class: " btn btn-info" %> 
+		</div>
+	</div>
+	<p> <%=  link_to 'Back', products_path, class: " btn btn-primary" %> </p> 
+</div>
+

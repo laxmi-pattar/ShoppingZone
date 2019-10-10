@@ -13,13 +13,13 @@
 </head>
 
 <body>
-	<%= render "shared/application_nav" %>
-
 	<div class="container">
-
-		
-		<%= yield %>
-
+		<div class="row">
+			<div class="col-6 offset-3 my-5 pt-5 pb-5 bg-info">
+				<%= yield %>
+			</div>
+		</div>
 	</div>
+
 </body>
 </html>

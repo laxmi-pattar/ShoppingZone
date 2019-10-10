@@ -1,0 +1,23 @@
+	<%= render "shared/application_banner" %>
+	<div class="album text-muted">
+		<div class="container">
+
+			<div class="row" style="margin-top: 30px;">
+
+				<% @products.each do |product| %>
+				<a href=" /products/<%= product.id%>">
+            
+					<div class="card picture" style="margin-top: 30px;" >
+						<%= image_tag product.image_url(:thumb) %>
+
+						<div class="card-text text-center">
+							<div><%= link_to product.title, product_path(product) %></div>
+						</div>
+					</div>
+				</a>
+
+				<% end %>
+
+			</div>
+		</div>
+	</div>
